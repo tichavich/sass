@@ -1,5 +1,5 @@
 {
-  "name": "backofficeSass",
+  "name": "Sass",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -24,3 +24,4 @@
     "select2": "^4.1.0-rc.0"
   }
 }
+
