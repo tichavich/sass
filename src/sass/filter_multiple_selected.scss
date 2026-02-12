@@ -1,0 +1,57 @@
+/* begin:: filter multiple selected */
+.dropdown-filter{
+	.dropdown-menu.filter-multiple-container{
+		min-width: 350px;
+		max-width: 400px;
+
+		.dropdown-item-container{
+			.highlight-keyword-search {    
+				background-color: #eff1e4;
+				color: rgba(0, 0, 0, 0.522);
+				border-radius: 0.3rem;
+			}
+			.dropdown-item{
+				position: relative;
+				padding-left: 2rem;
+			}
+			.dropdown-item[data-value="all"]{
+				color:#054d9e !important;
+				font-weight: bold;
+			}
+			.dropdown-item[data-value="all"]::before{
+				border-color: #8fb8e6;
+			}
+			.dropdown-item:active{
+				color:#ffffff !important;
+			}
+			.dropdown-item::before{
+				content: '';
+				position: absolute;
+				left: .5rem;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 16px;
+				height: 16px;
+				border: 2px solid #ccc;
+				border-radius: 4px;
+				background-color: #fff;
+			}
+			.dropdown-item[selected]::before{
+				background-color: #007bff;
+				border-color: #007bff;
+			}
+			.dropdown-item[selected]::after{
+				content: '✔';
+				position: absolute;
+				left: 0.7rem;
+				top: 50%;
+				transform: translateY(-50%);
+				font-size: 11px;
+				color: white;
+			}
+		}
+	}
+}
+
+
+/* enb:: filter multiple selected */

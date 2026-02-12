@@ -1,0 +1,210 @@
+@use 'sass:color';
+// Bootstrap 5
+@import "bootstrap_bs5/functions";
+@import "bootstrap_bs5/variables";
+
+
+/* begin::button soft */
+@mixin btn-outline-soft($color, $name) {
+	.btn-outline-soft-#{$name} {
+	  background-color: color.scale($color, $lightness: 95%, $saturation: -10%);
+	  border: 1px solid color.scale($color, $lightness: 70%, $saturation: -30%);
+	  color: $color;
+	  font-weight: 400;
+	  border-radius: 10px;
+	  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+	  &:hover {
+		background-color: color.scale($color, $lightness: 85%, $saturation: -1%);
+		border-color: color.scale($color, $lightness: 75%, $saturation: -30%);
+		color: color.scale($color, $lightness: -10%);
+		transform: translateY(-2px);
+		box-shadow: 0 10px 25px color.change($color, $alpha: 0.15);
+	  }
+  
+	  &:focus,
+	  &.focus {
+		box-shadow: 0 0 0 0.2rem color.change($color, $alpha: 0.2);
+		outline: none;
+	  }
+  
+	  &.disabled,
+	  &:disabled {
+		color: color.scale($color, $lightness: 40%);
+		background-color: transparent;
+		border-color: color.scale($color, $lightness: 85%, $saturation: -40%);
+		opacity: 0.6;
+		cursor: not-allowed;
+	  }
+  
+	  &:not(:disabled):not(.disabled):active,
+	  &:not(:disabled):not(.disabled).active,
+	  .show > &.dropdown-toggle {
+		background-color: color.scale($color, $lightness: 75%, $saturation: -30%);
+		border-color: color.scale($color, $lightness: 65%, $saturation: -20%);
+		color: color.scale($color, $lightness: -15%);
+	  }
+  
+	  &:not(:disabled):not(.disabled):active:focus,
+	  &:not(:disabled):not(.disabled).active:focus,
+	  .show > &.dropdown-toggle:focus {
+		box-shadow: 0 0 0 0.2rem color.change($color, $alpha: 0.2);
+	  }
+	}
+  }
+
+  $theme-colors: (
+	"primary": #0d6efd,
+	"danger": #dc2626
+  );  
+
+  @each $name, $color in $theme-colors {
+	@include btn-outline-soft($color, $name);
+  }
+/* end::button soft */
+
+
+/* begin::datatable */
+$text-color-hover: #0855a8;
+
+.gtw-datatable {
+    border: 1px solid #343a40;
+    border-top: none;
+    font-size: 13px;
+
+	th,td {
+		text-align: left;
+		border: 1px solid #343a40;
+		border-left-width: 0;
+		border-bottom-width: 0;
+	}
+	th:last-child,td:last-child {
+		border-right-width: 0;
+	}
+	> thead > tr > th {
+		background-color: #FFEBCD;
+		height: 40px;
+		text-align: center;
+	}
+	> tbody > tr > td {
+		padding: 2px 10px;
+	}
+
+	.text-edit-signature{
+		font-style: italic;
+		font-size: 12px;
+		color: #a2a4a5;
+	}
+
+	.edit-signature {
+		position: relative;
+		.edit-trigger{
+            position: absolute;
+            right: 1px;
+            top: 50%;
+            transform: translateY(-50%) scale(0.5);
+            background-color: #007bff;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;            
+            box-shadow: 0 4px 8px rgba(0,123,255,0.3);
+            pointer-events: none;
+
+			i {
+				font-size: 0.60rem;
+			}
+			&.ready {
+				transition: all 0.3s ease;
+			}
+		}
+
+		&:hover {
+            background-color: rgb(202 228 255 / 78%);
+            box-shadow: 0 5px 15px rgba(0,123,255,0.15);
+            color: $text-color-hover;
+            cursor: pointer;
+
+			.edit-trigger{
+				opacity: 1;
+				transform: translateY(-50%) scale(1);
+				right: 5px;
+			}
+			.text-edit-signature{
+				color: $text-color-hover;
+			}
+		}
+
+	}
+}
+/* eng::datatable*/
+
+.spinner-loading-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(235 235 235 / 23%);
+	z-index: 999;
+}  
+
+
+/* begin::list-group-item */	
+#person_list {
+	height: 450px;
+	max-height: calc(100vh - 120px);
+	overflow-x: hidden;
+	overflow-y: auto;
+	border: 1px solid rgba(5, 52, 105, 0.4509803922);
+
+	.list-group-item {
+		&.active {
+			color: #494343;
+			background-color: #e1efff87;
+			border-top-color: #aac8e9;
+			border-bottom-color: #aac8e9;
+			border-left: none;
+			  border-right: none;
+			
+			.text-title {
+				color: #8e949a;
+			}
+		}
+		.text-content-fullname {
+			color:#3b5877;		
+		}
+		.text-title {
+			color: #b1b1b1;
+			font-size: 10px;
+		}
+		.hightlight-keyword {
+			background-color: #eff1e4;
+			border-radius: 0.3rem;
+		}
+	}
+}
+/* end::list-group-item */
+
+/* begin::dropdown filter */
+$font-size-dropdown-filter: 14px;
+$text-max-width: 180px;
+.dropdown-filter-form{
+	.dropdown-filter-container{
+		input {
+			font-size: $font-size-dropdown-filter !important;
+		}
+		button.dropdown-toggle{
+			font-size: $font-size-dropdown-filter !important;
+			max-width: $text-max-width !important;
+		}
+	}
+}
+
+/* end::dropdown filter */
+
+

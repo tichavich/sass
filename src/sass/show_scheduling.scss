@@ -1,0 +1,160 @@
+
+/* begin::shift schedule table */
+.shift-schedule-table {
+	width: 100%;
+	border: 1px solid #000000;
+	background-color: #FFFFFF;
+
+	thead th {
+		border: 1px solid #000000;
+		text-align: center;
+		background-color: #f4f6fa;	
+	}
+
+	thead th.weekend,
+	tbody td.weekend {
+		background-color: #ffdede;
+	}
+
+	thead th.holiday,
+	tbody td.holiday {
+		background-color: #ffdede;
+	}
+
+	tbody td {
+		border: 1px solid #adb5bd;
+		padding: 2px;
+		height: 45px;
+		position: relative;
+		text-align: center;
+	}
+
+
+	tfoot td {
+		border: 1px solid #000000;
+		background-color: #f4f6fa;
+		font-weight: 700;
+		padding: 0 5px;
+	}
+
+	&.show-border-table tbody td {
+        border: 1px solid #000000;
+    }
+
+
+	.schedule-row-person{
+		width: 180px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		~ .text-description{
+            width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+		}
+	}
+
+	.schedule-highlight{
+		background-color: #edf6ff;
+	}
+
+	.shift-select-container{
+		width: 40px;
+
+		.shift-select-value{
+			font-size: 0.9rem;
+            word-break: break-word;
+		}
+	}
+
+
+	.sections-header{
+		cursor: pointer;
+
+		td{
+			font-size: 16px !important;
+		}
+
+		&:hover{
+			background-color: rgb(218 239 239 / 10%) !important;
+		}
+		&.active{
+			background-color: rgb(220 235 235 / 59%) !important;
+			color: #0d5a81;
+		}
+
+	}
+
+	.sections-sub{
+		display: none;
+
+		&.section-child td{
+			font-size: 15px !important;
+		}
+
+		&.show{
+			display: table-row;
+		}
+	}
+}
+/* end::shift schedule table */
+
+
+/* begin::modal align position */
+#grouping_position {
+	.position-list{
+		height: calc(70vh - 100px);
+		overflow-y: auto;
+
+		.ordinal {
+            width: 10% !important;
+
+			.form-control{
+				border-radius: 0.4rem;
+				font-size: 13px;
+				border: 1px solid #d0ddf4;
+				text-align: center;
+			}
+        }
+
+
+		.list-group-item {
+            padding: 0.6rem 0.8rem !important;
+        }
+
+		.section_name {
+            font-size:13px;
+        }
+
+		button{
+            border-radius: 0.4rem;
+            border: 1px solid #c0d5f9;
+            padding-top: 0.2rem;
+            padding-bottom: 0.2rem;
+
+			i.fa{
+				font-size:10px;
+				color: #0665d0;         
+        	}
+			&:hover i.fa{
+            	color: #022954;         
+        	}
+        }
+
+		button[disabled]{
+			border: 1px solid #ededed;
+
+			i.fa{
+				color: #b2bac1;
+			}
+			&:hover i.fa{
+            	color: #b2bac1;         
+        	}
+		}
+	}
+}
+
+/* end::modal align position */
+

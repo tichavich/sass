@@ -1,0 +1,305 @@
+@use 'sass:color';
+// Bootstrap 5
+@import "bootstrap_bs5/functions";
+@import "bootstrap_bs5/variables";
+
+$btn-green-lighter: #afc76c;
+.btn-green-lighter {
+	color: #fff;
+	background-color: $btn-green-lighter;
+	border-color: color.scale($btn-green-lighter, $lightness: -10%);
+
+	&:hover {
+		color: #fff;
+		background-color: color.change($btn-green-lighter, $lightness: 50%, $saturation: 50%);
+		border-color: color.change($btn-green-lighter, $lightness: 40%, $saturation: 70%);
+	}
+
+	&:focus,
+	&.focus {
+		box-shadow: 0 0 0 0.2rem color.change($btn-green-lighter, $lightness: 70%, $saturation: 60%, $alpha: 0.8);
+	}
+
+	&.disabled,
+	&:disabled {
+		color: #fff;
+		background-color: color.change($btn-green-lighter, $lightness: 45%, $saturation: 60%);
+		border-color: color.change($btn-green-lighter, $lightness: 40%, $saturation: 60%);
+	}
+
+	&:not(:disabled):not(.disabled):active,
+	&:not(:disabled):not(.disabled).active,
+	.show > .btn-green-lighter.dropdown-toggle {
+		color: #fff;
+		background-color: color.change($btn-green-lighter, $lightness: 50%, $saturation: 40%);
+		border-color: color.change($btn-green-lighter, $lightness: 50%, $saturation: 30%);
+	}
+
+
+	&:not(:disabled):not(.disabled):active:focus,
+	&:not(:disabled):not(.disabled).active:focus,
+	.show > .btn-green-lighter.dropdown-toggle:focus {
+		box-shadow: 0 0 0 0.2rem color.change($btn-green-lighter, $lightness: 70%, $saturation: 60%, $alpha: 0.8);
+	}
+}
+
+$btn-preview-main-color: #5DB996;
+.btn-attach-file-preview {
+	color: #fff;
+	background-color: $btn-preview-main-color;
+	border-color: color.scale($btn-preview-main-color, $lightness: -10%);
+
+	&:hover {
+		color: #fff;
+		background-color: color.change($btn-preview-main-color, $lightness: 40%, $saturation: 60%);
+		border-color: color.change($btn-preview-main-color, $lightness: 30%, $saturation: 80%);
+	}
+
+	&:focus,
+	&.focus {
+		box-shadow: 0 0 0 0.2rem color.change($btn-preview-main-color, $lightness: 70%, $saturation: 60%, $alpha: 0.8);
+	}
+
+	&.disabled,
+	&:disabled {
+		color: #fff;
+		background-color: color.change($btn-preview-main-color, $lightness: 45%, $saturation: 60%);
+		border-color: color.change($btn-preview-main-color, $lightness: 40%, $saturation: 60%);
+	}
+
+	&:not(:disabled):not(.disabled):active,
+	&:not(:disabled):not(.disabled).active,
+	.show > .btn-attach-file-preview.dropdown-toggle {
+		color: #fff;
+		background-color: color.change($btn-preview-main-color, $lightness: 50%, $saturation: 40%);
+		border-color: color.change($btn-preview-main-color, $lightness: 50%, $saturation: 30%);
+	}
+
+	&:not(:disabled):not(.disabled):active:focus,
+	&:not(:disabled):not(.disabled).active:focus,
+	.show > .btn-attach-file-preview.dropdown-toggle:focus {
+		box-shadow: 0 0 0 0.2rem color.change($btn-preview-main-color, $lightness: 70%, $saturation: 60%, $alpha: 0.8);
+	}
+}
+
+$btn-remove-main-color: #E06B80;
+.btn-attach-file-remove {
+	color: #fff;
+	background-color: $btn-remove-main-color;
+	border-color: color.scale($btn-remove-main-color, $lightness: -10%);
+
+	&:hover {
+		color: #fff;
+		background-color: color.change($btn-remove-main-color, $lightness: 40%, $saturation: 50%);
+		border-color: color.change($btn-remove-main-color, $lightness: 30%, $saturation: 70%);
+	}
+
+	&:focus,
+	&.focus {
+		box-shadow: 0 0 0 0.2rem color.change($btn-remove-main-color, $lightness: 70%, $saturation: 60%, $alpha: 0.8);
+	}
+
+	&.disabled,
+	&:disabled {
+		color: #fff;
+		background-color: color.change($btn-remove-main-color, $lightness: 45%, $saturation: 60%);
+		border-color: color.change($btn-remove-main-color, $lightness: 40%, $saturation: 60%);
+	}
+
+	&:not(:disabled):not(.disabled):active,
+	&:not(:disabled):not(.disabled).active,
+	.show > .btn-attach-file-remove.dropdown-toggle {
+		color: #fff;
+		background-color: color.change($btn-remove-main-color, $lightness: 50%, $saturation: 40%);
+		border-color: color.change($btn-remove-main-color, $lightness: 50%, $saturation: 30%);
+	}
+
+	&:not(:disabled):not(.disabled):active:focus,
+	&:not(:disabled):not(.disabled).active:focus,
+	.show > .btn-attach-file-remove.dropdown-toggle:focus {
+		box-shadow: 0 0 0 0.2rem color.change($btn-remove-main-color, $lightness: 70%, $saturation: 60%, $alpha: 0.8);
+	}
+}
+
+.btn-sm{
+	font-size: 0.875rem !important;
+}
+
+.fancybox__slide.has-iframe .f-html {
+    padding: 0;
+}  
+
+
+.attach-files,.info-appeal,.swal2-file-appeals {
+	.file-icon {
+		font-family: "Font Awesome 5 Free";
+		font-weight: 900;
+		font-size: 1.5rem;
+		opacity: 0.9;
+	}
+
+	table{
+		.btn-sm{
+			font-size: 0.675rem !important;		
+		}
+	}
+}
+
+.attach-files, .info-appeal,.swal2-file-appeals {
+	.file-icon[data-file-extension="pdf"]::before {
+		content: "\F1C1";
+		color: $red-400;
+	}
+
+	.file-icon[data-file-extension="doc"]::before,
+	.file-icon[data-file-extension="docx"]::before {
+		content: "\F1C2";
+		color: $blue-400;
+	}
+
+	.file-icon[data-file-extension="xls"]::before,
+	.file-icon[data-file-extension="xlsx"]::before {
+		content: "\F1C3";
+		color: $green-400;
+	}
+
+	.file-icon[data-file-extension="csv"]::before {
+		content: "\F6DD";
+		color: $teal-600;
+	}
+
+	.file-icon[data-file-extension="jpg"]::before,
+	.file-icon[data-file-extension="jpeg"]::before,
+	.file-icon[data-file-extension="png"]::before {
+		content: "\F1C5";
+		color: $blue-300;
+	}
+
+	.file-actions {
+		display: flex;
+		gap: 0.5rem;
+
+		.btn {
+			transition: all 0.3s ease;
+		}		
+		.btn:hover {
+			transform: scale(1.05);			
+		}
+	}
+}
+
+.attach-files {
+	.files-section{
+		margin-top: 1rem;
+
+		.files-header {
+			font-size: 16px;
+			font-weight: 700;
+			color: #2d3748;
+			margin-bottom: 0.5rem;
+			border-bottom: 2px solid #e2e8f0;
+		}
+
+		.empty-state {
+			text-align: center;
+			padding: 1rem;
+			color: #a0aec0;
+			font-size: 0.8rem;
+			border-radius: 0.25rem;
+		}
+
+		.files-list {
+			display: flex;
+			flex-direction: column;
+			gap: 0.3rem;
+		}
+	}
+}
+
+
+
+.info-appeal,.attach-files{
+	.table-responsive{
+		border: 1px solid #8eb4d7;
+		border-radius: $border-radius-sm;
+	}
+
+	table {
+		margin-bottom: 0;
+		th,td {
+			border: 1px solid #95c0e8 !important
+		}
+		thead tr th{
+			background-color: #daedff;
+		}
+		thead tr:last-of-type th{
+			border-top:none !important;
+		}
+		thead tr th:first-of-type{
+			border-left:none !important;
+		}
+		thead tr th:last-of-type{
+			border-right:none !important;
+		}
+		tbody tr td:first-of-type{
+			border-left:none !important;
+		}
+		tbody tr td:last-of-type{
+			border-right:none !important;
+		}
+		tbody tr:last-of-type td{
+			border-bottom:none !important;
+		}
+	}
+
+	.alert-info-appeal{
+		.type-info{
+			color: $blue-700;
+		}
+		.type-warning{
+			color: $yellow-700;
+		}
+		.type-danger{
+			color: $red-700;
+		}
+	}
+}
+
+/* begin:: file-appeals */
+.file-appeals {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	transition: all 0.2s;
+
+	&:hover{
+		transform: translateY(-2px);
+	}
+
+	.badge-count{
+		position: absolute;
+		top: -3px;
+		right: -6px;
+		border-radius: 50%;
+		padding: 4px 7px;
+		font-size: 10px;
+	}
+}
+.swal2-file-appeals {
+	display: flex;
+	align-items: center;
+	padding: 12px;
+	margin-bottom: 8px;
+	border: 1px solid #eee;
+	border-radius: 8px;
+	text-align: left;
+	transition: background 0.2s;
+
+	&:hover{
+		background: #f9f9f9;
+	}
+}
+/* end:: file-appeals */
+
+
+

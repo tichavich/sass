@@ -6,13 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:gulp": "gulp --gulpfile src/cli/gulp.sass.mjs",
+    "build:gulp": "gulp --gulpfile src/cli/gulp.sass.mjs sass",
     "dev:sass": "sass --watch src/sass:dist/sass --no-source-map --style=expanded",
-    "build:sass": "sass src/sass:dist/sass --style=compressed --no-source-map"
+    "build:sass": "sass src/sass:dist/sass --style=compressed --no-source-map",
+    "logging:read": "node src/cli/read-log.mjs",
+    "json:read": "node src/cli/read-json.mjs"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^4.6.0",
+    "@fancyapps/ui": "^6.1.6",
     "del": "^8.0.0",
     "gulp": "^5.0.1",
     "gulp-clean-css": "^4.3.0",
@@ -22,6 +25,8 @@
     "gulp-sass": "^6.0.1",
     "sass": "^1.89.2",
     "select2": "^4.1.0-rc.0"
+  },
+  "devDependencies": {
+    "bootstrap": "^5.3.8"
   }
 }
-
