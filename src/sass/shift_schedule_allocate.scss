@@ -1,0 +1,47 @@
+@use 'sass:color';
+// Bootstrap 5
+@import "bootstrap_bs5/functions";
+@import "bootstrap_bs5/variables";
+
+
+.click-shift-mode{
+	.dropdown-menu{
+		.click-shift-list{
+			.text-position-label {
+				font-size: 11px;
+				color: #c1ccd7;
+				margin-right: 0.3rem;
+			}
+			.text-position-name {
+				font-size: 13px;
+				color: #abb2b9;
+			}
+		}
+	}
+}
+
+/* Begin::select2-shift */
+#multiple_add_modal {
+	.select2-container--default {
+		.select2-results__option{
+			.select2-position-label{
+				font-size: 10px;
+				margin-right: 0.3rem;
+				color: #a7adb3;
+			}
+			.select2-position-name{
+				font-size: 12px;
+				color: $gray-600;
+			}
+		}
+		.select2-results__option--highlighted {
+			.select2-position-label{
+				color: #ffffff8a;
+			}
+			.select2-position-name{
+				color: #ffffff9c;
+			}
+		}
+	}
+}
+/* End::select2-shift */
