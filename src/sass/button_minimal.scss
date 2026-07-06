@@ -1,0 +1,14 @@
+@use 'sass:color';
+// Bootstrap 5
+@import "bootstrap_bs5/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "btn_minimal";
+
+$minimal-colors: (
+	"blue": $primary,
+	"green": $success,
+	"cyan": $info
+);
+
+@include btn-minimal-variants($minimal-colors);

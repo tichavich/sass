@@ -1,0 +1,316 @@
+@use 'sass:color';
+// Bootstrap 5
+@import "bootstrap_bs5/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// Colors (Mapped to Bootstrap 5)
+$primary-color: $primary;
+$success-color: $success;
+$warning-color: $warning;
+$info-color: $info;
+$danger-color: $danger;
+$text-dark: $dark;
+$text-muted: $secondary;
+$border-color: $gray-400;
+
+$bg-drag-over: tint-color($primary-color, 95%);
+
+.custom-control-label {
+    cursor: pointer;
+}
+.builder-zone {
+    min-height: 80px;
+    background: $white;
+    border: 2px dashed $border-color;
+    border-radius: $border-radius-xl;
+    padding: 1.25rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    transition: border-color 0.2s, background 0.2s;
+
+    &.drag-over {
+        border-color: $primary-color;
+        background: $bg-drag-over;
+    }
+
+    .empty-msg {
+        width: 100%;
+        text-align: center;
+        color: map-get($grays, "500");
+        font-size: 0.95rem;
+        padding: 1rem 0;
+    }
+    .dropdown {
+        .add-pattern-btn {
+            display: flex;
+            align-items: center;
+            border: 2px dashed $border-color;
+            background: transparent;
+            color: $text-muted;
+            border-radius: $border-radius-lg;
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+
+            &:hover {
+                border-color: $primary-color;
+                color: $primary-color;
+                background: $bg-drag-over;
+            }
+        }
+        .dropdown-menu.pattern-dropdown {
+            min-width: 220px;
+            padding: 0.5rem 0;
+            .dropdown-item {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+                transition: background 0.15s;
+                i {
+                    width: 22px;
+                    text-align: center;
+                }
+                &.disabled {
+                    opacity: 0.45;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+}
+
+@keyframes blockIn {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.format-block {
+    position: relative;
+    border-radius: $border-radius-lg;
+	padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 90px;
+    text-align: center;
+    cursor: default;
+    user-select: none;
+    transition: box-shadow 0.2s, transform 0.15s, opacity 0.2s, border-color 0.2s;
+    animation: blockIn 0.25s ease-out;
+    &:hover {
+        box-shadow: 0 3px 10px rgba($dark, 0.08);
+        transform: translateY(-1px);
+
+        .block-actions {
+            opacity: 1;
+        }
+    }
+
+    &.type-fsn {
+        background: tint-color($primary-color, 95%);
+        border: 1px solid $primary-color;
+        .block-label { background: $primary-color; }
+    }
+
+    &.type-sequence {
+        background: tint-color($success-color, 95%);
+        border: 1px solid $success-color;
+        .block-label { background: $success-color; }
+
+        &:focus-within {
+            border-color: color.adjust($success-color, $lightness: -12%);
+			background-color: tint-color($success-color, 97%);
+        }
+    }
+
+    &.type-year {
+        background: tint-color($warning-color, 95%);
+        border: 1px solid $warning-color;
+        .block-label { background: $yellow-600; }
+        
+        .block-value {
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        &:has(.reset-badge) {
+            .block-value {
+                font-size: 0.75rem; // ปรับลดขนาดลงหากมีการรีเซต
+                line-height: 1;
+            }
+            .reset-badge {
+                padding: 1px 5px !important;
+                font-size: 0.55rem !important;
+                margin-top: 2px !important;
+            }
+        }
+    }
+
+    &.type-text {
+        background:  tint-color($info-color, 95%);
+        border: 1px solid $info-color;
+        .block-label { background: $cyan-600; }
+
+        &:focus-within {
+            border-color: color.adjust($info-color, $lightness: -12%);
+			background-color: tint-color($info-color, 97%);
+        }
+    }
+
+    .block-label {
+        position: absolute;
+        top: -10px;
+        left: 8px;
+        font-size: 0.6rem;
+        color: $white;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        padding: 1px 7px;
+        border-radius: 3px;
+        opacity: 1;
+        pointer-events: none;
+    }
+
+    .block-value {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: $text-dark;
+    }
+
+    /* Action icons on block */
+    .block-actions {
+        position: absolute;
+        top: -10px;
+        right: -8px;
+        display: flex;
+        gap: 3px;
+        opacity: 0;
+        transition: opacity 0.15s;
+    }
+
+    /* Drag ghost */
+    &.ghost {
+        opacity: 0.3;
+        border: 2px dashed $border-color;
+        background: map-get($grays, "200");
+    }
+
+    &.dragging {
+        opacity: 0.85;
+        box-shadow: 0 8px 25px rgba($dark, 0.15);
+        transform: scale(1.05);
+        z-index: 1000;
+        pointer-events: none;
+        position: fixed;
+    }
+}
+
+.block-action {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 9px;
+    color: $white;
+    border: none;
+    box-shadow: 0 1px 3px rgba($dark, 0.2);
+    transition: transform 0.1s;
+    padding: 0;
+
+    &:hover {
+        transform: scale(1.15);
+    }
+
+    &-close {
+        background: $danger-color;
+    }
+
+    &-gear {
+        background: $text-dark;
+    }
+}
+
+.drop-indicator {
+    width: 3px;
+    background: $primary-color;
+    border-radius: 2px;
+    align-self: stretch;
+    min-height: 40px;
+    transition: opacity 0.15s;
+}
+
+/* ===== Inputs inside blocks ===== */
+.block-text-input,
+.block-sequence-input {
+    width: 90px;
+    text-align: center;
+    font-weight: 700;
+    color: $text-dark;
+    border: none;
+    padding: 2px 6px;
+    font-size: 1rem;
+    background: transparent;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.block-sequence-input {
+    width: 120px;
+}
+
+.block-text-input {
+    width: 130px;
+}
+
+.preview-result {
+    background: tint-color($gray-500, 95%);
+    color: $text-dark;
+    border-radius: $border-radius-xl;
+    padding: 1.25rem 1.5rem;
+    border:2px solid map-get($grays, "200");
+    font-size: 1.5rem;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    word-break: break-all;
+
+    .empty-txt {
+        color: $text-muted;
+        font-size: 1rem;
+        letter-spacing: normal;
+    }
+    .segment-fsn {
+        color: map-get($blues, "blue-700");
+    }
+    .segment-sequence {
+        color: map-get($greens, "green-700");
+    }
+    .segment-year {
+        color: map-get($yellows, "yellow-700");
+    }
+    .segment-text {
+        color: map-get($cyans, "cyan-700");
+    }
+}
+#options_year_modal{
+  #options_year_modal_label{
+    color: $yellow-600;
+  }
+}
